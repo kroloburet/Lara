@@ -1,0 +1,67 @@
+@import "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css";
+
+.cc--custom-theme {
+    --cc-bg: var(--UI_base-body-bg-color);
+    --cc-primary-color: var(--headers-font-color);
+    --cc-secondary-color: var(--UI_base-font-color);
+
+    --cc-btn-border-radius: var(--UI_base-border-radius);
+
+    --cc-btn-primary-bg: var(--UI_primary-bg-color);
+    --cc-btn-primary-color: var(--UI_primary-font-color);
+    --cc-btn-primary-hover-bg: var(--UI_primary-hover-bg-color);
+    --cc-btn-primary-hover-color: var(--UI_primary-hover-font-color);
+
+    --cc-btn-secondary-bg: transparent;
+    --cc-btn-secondary-color: var(--UI_link-color);
+    --cc-btn-secondary-hover-bg: transparent;
+    --cc-btn-secondary-hover-color: var(--UI_link-hover-color);
+    --cc-btn-secondary-hover-border-color: transparent;
+
+    --cc-cookie-category-block-bg: transparent;
+    --cc-cookie-category-block-border: var(--tertiary-bg-color);
+    --cc-cookie-category-block-hover-bg: var(--primary-bg-color);
+    --cc-cookie-category-block-hover-border: var(--tertiary-bg-color);
+    --cc-cookie-category-expanded-block-hover-bg: var(--tertiary-bg-color);
+    --cc-cookie-category-expanded-block-bg: transparent;
+    --cc-toggle-readonly-bg: var(--primary-bg-color);
+    --cc-overlay-bg: rgba(0, 0, 0, .5) !important;
+
+    --cc-toggle-on-knob-bg: var(--cc-bg);
+    --cc-toggle-readonly-knob-bg: var(--tertiary-bg-color);
+
+    --cc-separator-border-color: var(--tertiary-bg-color);
+
+    --cc-footer-border-color: var(--tertiary-bg-color);
+    --cc-footer-bg: var(--primary-bg-color);
+
+    .cm__btn--secondary,
+    .pm__btn--secondary,
+    [data-role="necessary"] {
+        background-color: var(--UI_contour-bg-color) !important;
+        border: var(--UI_base-border-width) solid var(--UI_contour-border-color) !important;
+        color: var(--UI_contour-font-color) !important;
+    }
+
+    .cm__btn--secondary:hover,
+    .pm__btn--secondary:hover,
+    [data-role="necessary"]:hover {
+        background-color: var(--UI_contour-hover-bg-color) !important;
+        border-color: var(--UI_contour-hover-bg-color) !important;
+        color: var(--UI_contour-hover-font-color) !important;
+    }
+
+    #cc-main .cm__link-group {
+        justify-content: center !important;
+    }
+
+    #cc-main .cc__link, #cc-main a {
+        color: var(--UI_link-color) !important;
+        font-weight: normal !important;
+        background: none !important;
+    }
+
+    #cc-main .cc__link:hover, #cc-main a:hover {
+        color: var(--UI_link-hover-color) !important;
+    }
+}

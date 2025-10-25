@@ -1,0 +1,43 @@
+/**************************
+ * Variables
+ **************************/
+
+/*:root {*/
+/*    --content-max-width: 900px;*/
+/*}*/
+
+/**************************
+ * Layout
+ **************************/
+
+/*.material-content {*/
+/*    max-width: var(--content-max-width);*/
+/*    margin: auto;*/
+/*}*/
+
+/**************************
+ * Material List and Paginate
+ **************************/
+
+/*--- Category Material List ---*/
+.categoryMaterialList section {
+    margin-top: var(--layout-gap-l);
+}
+
+/*--- Material List ---*/
+.materialList {
+    display: grid;
+    justify-content: space-between;
+    gap: var(--layout-gap);
+    grid-template-columns: 1fr 1fr;
+}
+
+/**************************
+ * Adaptation
+ **************************/
+
+@media (max-width: 900px) {
+    .materialList {
+        grid-template-columns: 1fr;
+    }
+}

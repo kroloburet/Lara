@@ -1,0 +1,255 @@
+/**************************
+ * Variables
+ **************************/
+
+:root {
+}
+
+/**************************
+ * Assistants
+ **************************/
+h1 {
+    font-size: clamp(2.25rem, 3vw, 4rem);
+}
+
+/**************************
+ * Layout
+ **************************/
+
+.base-main {
+    margin-top: var(--layout-gap-l);
+}
+
+.base-main > .base-main-aside nav {
+    max-height: 17.5em !important;
+    background-color: var(--nav-bg-color);
+}
+
+
+/**************************
+ * Location Component
+ **************************/
+
+.locationComponent {
+    margin-top: var(--UI_form-gap-top);
+    margin-bottom: var(--UI_form-gap-bottom);
+}
+
+.locationComponent .locationComponent_map {
+    height: 35vh;
+    border: var(--UI_form-border-width) solid var(--UI_form-border-color);
+    border-top: none;
+    box-shadow: var(--UI_form-shadow);
+    border-bottom-left-radius: var(--UI_form-border-radius);
+    border-bottom-right-radius: var(--UI_form-border-radius);
+}
+
+.locationComponent .locationComponent_controls {
+    position: relative;
+}
+
+.locationComponent .locationComponent_controls .UI_form-component {
+    margin: 0;
+}
+
+.locationComponent .locationComponent_reset-btn {
+    border-bottom-right-radius: 0;
+}
+
+.locationComponent .locationComponent_get-current-btn.process::before {
+    content: "\f110" !important;
+    animation: fa-spin 2s linear infinite;
+}
+
+.locationComponent .locationComponent_get-current-btn.done::before {
+    content: "\f00c" !important;
+    color: var(--green-success);
+    animation: none;
+}
+
+.locationComponent .locationComponent_search-field {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+}
+
+.locationComponent .locationComponent_msg.locationComponent_show-msg {
+    position: absolute;
+    width: 100%;
+    color: var(--UI_Notice-font-color);
+    font-size: .8em;
+    padding: .5em var(--UI_form-field-paddingX);
+    background-color: var(--UI_Notice-error-bg-color);
+    z-index: 99999999 !important;
+}
+
+/*--- Google Places Autocomplete ---*/
+.pac-container {
+    z-index: 99999999 !important;
+    background: var(--UI_form-bg-color);
+    border: var(--UI_form-border-width) solid var(--UI_form-border-color);
+    border-top: none;
+    border-bottom-left-radius: var(--UI_form-border-radius);
+    border-bottom-right-radius: var(--UI_form-border-radius);
+}
+
+.pac-item {
+    cursor: pointer;
+    border: none;
+    padding: var(--UI_form-field-paddingY) var(--UI_form-field-paddingX);
+}
+
+.pac-item:hover {
+    background-color: var(--UI_form-active-bg-color);
+}
+
+.pac-item-query {
+    color: var(--UI_form-font-color);
+}
+
+@media (max-height: 600px) {
+    .locationComponent .locationComponent_map {
+        height: 95vh;
+    }
+}
+
+/**************************
+ * Form List Component
+ **************************/
+
+.formListComponent > .UI_form-component {
+    margin-bottom: 0;
+}
+
+.formListComponent > .UI_form-component input {
+    border-bottom-left-radius: 0;
+}
+
+.formListComponent > .UI_form-component .UI_form-component-control {
+    border-bottom-right-radius: 0;
+}
+
+.formListComponent .formListComponent_items {
+    margin-bottom: var(--UI_form-gap-bottom);
+    border: var(--UI_form-border-width) solid var(--UI_form-border-color);
+    border-top: none;
+    border-radius: 0 0 var(--UI_form-border-radius) var(--UI_form-border-radius);
+    max-height: 10em;
+    overflow: auto;
+}
+
+.formListComponent .formListComponent_items .UI_form-component,
+.formListComponent .formListComponent_items .UI_form-component * {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.formListComponent .formListComponent_items .UI_form-component:last-of-type .UI_form-component-control {
+    border-bottom-right-radius: var(--UI_form-border-radius);
+}
+
+.formListComponent .formListComponent_items .content {
+    padding: var(--UI_form-field-paddingY) var(--UI_form-field-paddingX);
+    font-size: var(--UI_form-font-size);
+    line-height: var(--UI_form-line-height);
+    flex-grow: 1;
+}
+
+.formListComponent .formListComponent_items .content :first-child {
+    margin-right: 1.2em;
+}
+
+.formListComponent .formListComponent_items .noAdded {
+    padding: var(--UI_form-field-paddingY) var(--UI_form-field-paddingX);
+    color: var(--UI_form-placeholder-color);
+    text-align: center;
+}
+
+/**************************
+ * Content Editor (tinymce)
+ **************************/
+
+.tox-tinymce {
+    margin-top: var(--UI_form-gap-top) !important;
+    margin-bottom: var(--UI_form-gap-bottom) !important;
+    border: var(--UI_base-border-width) solid var(--UI_form-border-color) !important;
+    border-radius: var(--UI_form-border-radius) !important;
+    box-shadow: var(--UI_form-shadow) !important;
+}
+
+.tox:not(.tox-tinymce-inline) .tox-editor-header {
+    border-bottom: var(--UI_base-border-width) solid var(--UI_form-border-color) !important;
+    box-shadow: var(--UI_form-shadow) !important;
+}
+
+.tox-tinymce:hover {
+    border-color: var(--UI_form-focus-border-color) !important;
+    box-shadow: var(--UI_form-focus-shadow) !important;
+}
+
+.tox .tox-edit-area::before {
+    border: none !important;
+}
+
+/**************************
+ * File Manager (Flmngr)
+ **************************/
+
+.FileManager {
+    color: #000000;
+}
+
+.FileManager > .FileManager__toolbar {
+    overflow-x: auto !important;
+}
+
+.FileManager > div:last-child > .FileManager__folders {
+    flex: 0 0 25% !important;
+    overflow-x: auto !important;
+    min-width: 200px;
+}
+
+.FileManager__Breadcrumbs {
+    overflow-x: auto !important;
+    align-items: end !important;
+}
+
+.FileManager__Breadcrumbs .FileManager__Breadcrumbs__folders {
+    height: 30px !important;
+}
+
+.FileManager__ToggleSorting button {
+    padding: 0 !important;
+    border: none !important;
+}
+
+.FileManager__ToggleSorting {
+    align-self: center !important;
+    margin-right: 0 !important;
+}
+
+.FileManager__Breadcrumbs .FileManager__Breadcrumbs__children > .MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root {
+    min-height: auto !important;
+}
+
+.FileManager__Files.FileManager__Files--thumbnails {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+    gap: 10px !important;
+}
+
+@media (max-width: 600px) {
+    /*--- Flmngr ---*/
+    .FileManager > div:last-child {
+        flex-direction: column !important;
+    }
+
+    .FileManager > div:last-child > .FileManager__folders {
+        flex: 0 0 100% !important;
+        max-height: 100px !important;
+        width: auto !important;
+        border-right: none !important;
+        border-bottom: 1px solid #CCC;
+    }
+}

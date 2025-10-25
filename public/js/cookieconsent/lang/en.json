@@ -1,0 +1,37 @@
+{
+    "consentModal": {
+        "title": "We use cookies",
+        "description": "👋 Hi! We use cookies to provide the basic functionality of the website and to improve your Internet experience. Please make your choice to let or ban us using cookies. Select which cookies you accept and which reject by clicking \"Cookie preferences\" below. If then you want to change your choice, click \"Cookie preferences\" at the end of the page.",
+        "acceptAllBtn": "Accept all",
+        "acceptNecessaryBtn": "Reject all",
+        "showPreferencesBtn": "Cookie preferences"
+    },
+    "preferencesModal": {
+        "title": "Cookie preferences",
+        "acceptAllBtn": "Accept all",
+        "acceptNecessaryBtn": "Reject all",
+        "savePreferencesBtn": "Save preferences",
+        "closeIconLabel": "Close preferences",
+        "sections": [
+            {
+                "title": "Cookie usage",
+                "description": "Which cookies we use and which ones you accept or reject. Please make your choice and then click \"Save preferences\"."
+            },
+            {
+                "title": "Strictly and technics necessary cookies",
+                "description": "These cookies are essential for the proper functioning of this website. Without these cookies, the website would not work properly",
+                "linkedCategory": "necessary"
+            },
+            {
+                "title": "Performance and Analytics cookies",
+                "description": "These cookies allow the website to remember the choices you have made in the past for Google Analytics cookies, etc.",
+                "linkedCategory": "analytics"
+            },
+            {
+                "title": "Targeting and Advertising",
+                "description": "These cookies are used to make advertising messages more relevant to you and your interests. The intention is to display ads that are relevant and engaging for the individual user and thereby more valuable for publishers and third party advertisers.",
+                "linkedCategory": "ads"
+            }
+        ]
+    }
+}
