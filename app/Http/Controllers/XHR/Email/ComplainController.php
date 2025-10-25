@@ -22,8 +22,9 @@ class ComplainController extends Controller
     {
         $data = $request->validated();
         $message = $data['complain']['message'] ? strip_tags($data['complain']['message']) : __('base.Empty_value');
+        $adminEmail = consumerBuilder('admin')->first('email')->email;
 
-        Mail::to(env('MAIL_TO_ADDRESS'))->send(new Complain([
+        Mail::to($adminEmail ?? env('MAIL_TO_ADDRESS'))->send(new Complain([
             'email' => $data['email'] ?? __('base.Empty_value'),
             'phone' => $data['phone'] ?? __('base.Empty_value'),
             'url' => $data['complain']['url'],

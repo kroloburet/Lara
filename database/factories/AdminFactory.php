@@ -24,7 +24,7 @@ class AdminFactory extends Factory
     {
         return [
             'type' => 'admin',
-            'email' => 'kroloburet@gmail.com',
+            'email' => env('MAIL_TO_ADDRESS'),
             'password' => Hash::make('aaAA&&55'),
             'permissions' => json_encode(config('app.consumers.types.admin.permits', [])),
             'settings' => json_encode(config('app.consumers.types.admin.settings', [])),

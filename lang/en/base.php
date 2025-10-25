@@ -5,7 +5,7 @@ return [
     "default_meta_title" => "Content Management System | " . env("APP_NAME"),
     "default_meta_desc" => "Minimalistic CMS for quickly launching a website based on Laravel.",
     "default_title" => "👋 Hello, Lara!",
-    "default_desc" => "<p>For a simple web application, the System includes everything you need. Want more — learn Laravel<br><a href='/admin'>Log in as Administrator</a> [ kroloburet@gmail.com / aaAA&&55 ], manage content and System settings.</p>",
+    "default_desc" => "<p>For a simple web application, the System includes everything you need. Want more — learn Laravel<br><a href='/admin'>Log in as Administrator</a> [ " . env('MAIL_TO_ADDRESS') . " / aaAA&&55 ], manage content and System settings.</p>",
     // End Initial System Vars
 
     "Support_feedback" => "Support & Feedback",

@@ -21,8 +21,9 @@ class AppealController extends Controller
     ): JsonResponse
     {
         $data = $request->validated();
+        $adminEmail = consumerBuilder('admin')->first('email')->email;
 
-        Mail::to(env('MAIL_TO_ADDRESS'))->send(new Appeal([
+        Mail::to($adminEmail ?? env('MAIL_TO_ADDRESS'))->send(new Appeal([
             'email' => $data['email'] ?? __('base.Empty_value'),
             'phone' => $data['phone'] ?? __('base.Empty_value'),
             'theme' => __("form.appeal.theme.{$data['appeal']['theme']}"),

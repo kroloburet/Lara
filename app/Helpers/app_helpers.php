@@ -62,9 +62,9 @@ if (! function_exists('consumerBuilder')) {
      */
     function consumerBuilder(string $consumerType): Consumer|Builder
     {
-        $consumerConfigData = config("app.consumer.types.{$consumerType}");
+        $consumerConfigData = config("app.consumers.types.{$consumerType}");
         if (! $consumerConfigData || ! isset($consumerConfigData['model'])) {
-            throw new \InvalidArgumentException("Invalid material type: {$consumerType}", 500);
+            throw new \InvalidArgumentException("Invalid consumer type: {$consumerType}", 500);
         }
 
         $model = resolve($consumerConfigData['model']);

@@ -46,6 +46,5 @@ class Admin extends Consumer
                 $model->type = 'moderator';
             }
         });
-
     }
 }
