@@ -415,11 +415,14 @@ if (! function_exists('getMenu')) {
             ? Menu::withTrashed()->where('locale', $locale)
             : Menu::query()->where('locale', $locale);
 
-        return $builder
+        $tree = $builder
             ->whereNull('parent_id')
             ->with('allChildren')
             ->orderBy('order')
+            ->orderBy('id', 'desc')
             ->get();
+
+        return $tree;
     }
 }
 

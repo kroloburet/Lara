@@ -198,8 +198,8 @@ body {
     border-bottom: var(--UI_base-border);
     background-image: var(--layout-header-bg-image);
     background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: center;
+    background-size: cover;
+    background-position: top center;
     animation: background-animation 1s ease;
 }
 
@@ -212,7 +212,7 @@ body {
 
 .base-main {
     display: flex;
-    margin: var(--layout-gap) auto var(--layout-gap-l) auto;
+    margin: var(--layout-gap-l) auto;
     width: 100%;
     gap: var(--layout-gap);
 }
@@ -337,11 +337,6 @@ body {
 .base-hero-s p {
     font-size: var(--primary-adaptive-font-size);
     color: var(--tertiary-color);
-}
-
-.base-hero p:last-of-type,
-.base-hero-s p:last-of-type {
-    margin: 0;
 }
 
 .base-hero-s {

@@ -16,10 +16,6 @@ h1 {
  * Layout
  **************************/
 
-.base-main {
-    margin-top: var(--layout-gap-l);
-}
-
 .base-main > .base-main-aside nav {
     max-height: 17.5em !important;
     background-color: var(--nav-bg-color);
