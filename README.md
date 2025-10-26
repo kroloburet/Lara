@@ -12,7 +12,7 @@ Lara is a simple and flexible Content Management System built on [Laravel](https
 
 1. Clone the repository into your project folder:
    ```bash
-   git clone --depth 1 https://github.com/kroloburet/Lara.git myProject && cd myProject
+   git clone --depth 1 git@github.com:kroloburet/Lara.git myProject && cd myProject
    ```
 
 2. Install backend dependencies:
