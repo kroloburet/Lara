@@ -58,5 +58,13 @@ return [
             "bottom-aside-adaptive" => "Bottom column",
             "not-aside-adaptive" => "No column",
         ],
+        "layout_max_width" => [
+            "label" => "Maximum layout width (px)",
+            "hint" => "Determine what the maximum width of the layout will be on the PC. The recommended width is 1300px",
+        ],
+        "aside_width" => [
+            "label" => "Layout column width (%)",
+            "hint" => "Determine what the layout column width will be as a percentage of the layout width. Recommended width 30%",
+        ],
     ],
 ];

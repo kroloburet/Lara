@@ -54,16 +54,16 @@
         </div>
     </div>
 
-    <span class="form_field-label">{!! __('settings.layout.desktop.label') !!}</span>
+    <span class="form_field-label">{!! __('settings.layout.layout_max_width.label') !!}</span>
     <i class="base_hint-icon" data-hint="this"></i>
-    <span class="UI_Hint">{!! __('settings.layout.mobile.hint') !!}</span>
+    <span class="UI_Hint">{!! __('settings.layout.layout_max_width.hint') !!}</span>
     <input type="range" class="UI_InputRange layoutComponent_layoutMaxWidthField" min="800" max="2000" step="1"
            data-css-variable="--layout-max-width"
            value="{{ $layoutSettings['layoutMaxWidth'] }}">
 
-    <span class="form_field-label">{!! __('settings.layout.desktop.label') !!}</span>
+    <span class="form_field-label">{!! __('settings.layout.aside_width.label') !!}</span>
     <i class="base_hint-icon" data-hint="this"></i>
-    <span class="UI_Hint">{!! __('settings.layout.mobile.hint') !!}</span>
+    <span class="UI_Hint">{!! __('settings.layout.aside_width.hint') !!}</span>
     <input type="range" class="UI_InputRange layoutComponent_asideWidthField" min="20" max="50" step="1"
            data-css-variable="--layout-aside-width"
            value="{{ $layoutSettings['asideWidth'] }}">
