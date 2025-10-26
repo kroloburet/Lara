@@ -38,6 +38,7 @@
 
         .UI_Menu-toggle-btn {
             margin-bottom: 0;
+            margin-left: auto;
             font-size: 1.2em;
             background-color: var(--nav-bg-color);
         }

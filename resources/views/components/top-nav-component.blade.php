@@ -77,7 +77,10 @@
             margin-right: auto;
         }
 
-        /*.topNavComponent_menu,*/
+        #topNavComponent .topNavComponent_menu {
+            margin-left: auto;
+        }
+
         .topNavComponent_user-panel {
             display: flex;
             align-items: center;
