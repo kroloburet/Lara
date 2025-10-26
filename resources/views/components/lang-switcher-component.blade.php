@@ -1,6 +1,12 @@
+@php
+    $availableLocales = config('app.available_locales', []);
+
+    if (count($availableLocales) < 2) return;
+@endphp
+
 <!--- Lang Switcher Component --->
 <select class="langSwitcherComponent UI_Select UI_inline-form" data-select-placeholder="">
-    @foreach(config('app.available_locales', []) as $name => $locale)
+    @foreach($availableLocales as $name => $locale)
         <option value="{{ $locale }}" @selected(request()->segment(1) === $locale)>{{ $name }}</option>
     @endforeach
 </select>
