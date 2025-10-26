@@ -1,8 +1,12 @@
 @props(['phone' => null, 'required' => false])
-@php([$countryCode, $number] = $phone ? explode(' ', $phone) : [null, null])
+
+@php
+    [$countryCode, $number] = $phone ? explode(' ', $phone) : [null, null];
+    $uniqId = uniqid('phoneComponent_')
+@endphp
 
 <!--- Phone Component --->
-<div id="phoneComponent" {{ $attributes }}>
+<div id="{{ $uniqId }}" {{ $attributes->class(['phoneComponent']) }}>
     <div class="UI_form-component">
         <select class="UI_Select UI_inline-form phoneComponent_country-code"
                 data-select-placeholder=""
@@ -10,31 +14,38 @@
                 data-with-search="true">
             @foreach(getCountriesCollect() as $country)
                 <option data-find-of="{{ $country['name'] }} {{ $country['native'] }} {{ $country['iso2'] }}"
-                    value="{{ $country['phoneCode'] }}" @selected($countryCode === $country['phoneCode'])>
+                        value="{{ $country['phoneCode'] }}" @selected($countryCode === $country['phoneCode'])>
                     {{ $country['flag'] }} {{ $country['phoneCode'] }}</option>
             @endforeach
         </select>
         <input type="tel" class="phoneComponent_tel" placeholder="{{ __('form.phone.placeholder') }}"
                autocomplete="tel" value="{{ $number }}"
-               @required($required)>
+            @required($required)>
     </div>
     <textarea type="hidden" name="phone" class="phoneComponent_data" @required($required)>{{ $phone }}</textarea>
 </div>
 
-@pushOnce('endPage')
+@pushonce('endPage')
 
     <!--
     ########### Phone Component
     -->
 
     <script>
-        window.phoneComponent = new class {
-            #component = document.querySelector(`#phoneComponent`);
-            #countryCodeField = this.#component.querySelector(`:scope .phoneComponent_country-code`);
-            #telField = this.#component.querySelector(`:scope .phoneComponent_tel`);
-            #dataField = this.#component.querySelector(`:scope .phoneComponent_data`);
+        class PhoneComponent {
+            #component;
+            #countryCodeField;
+            #telField;
+            #dataField;
 
-            constructor() {
+            constructor(componentId) {
+                this.#component = document.getElementById(`${componentId}`);
+                if (!this.#component) return;
+
+                this.#countryCodeField = this.#component.querySelector(`:scope .phoneComponent_country-code select`);
+                this.#telField = this.#component.querySelector(`:scope input.phoneComponent_tel`);
+                this.#dataField = this.#component.querySelector(`:scope textarea.phoneComponent_data`);
+
                 // Search user country in options list
                 this.#countryCodeField.addEventListener(`UI.beforeDropdownShow`, async () => {
                     const data = await IPinfo();
@@ -100,4 +111,10 @@
             }
         }
     </script>
-@endPushOnce
+@endpushonce
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        new PhoneComponent(`{{ $uniqId }}`);
+    });
+</script>
