@@ -78,33 +78,7 @@ Lara is a simple and flexible Content Management System built on [Laravel](https
    vite build && php artisan optimize:clear
    ```
 
-3. **Exclude the following paths** when deploying to the server:
-   ```text
-   .env
-   .env.local
-   .env.*.local
-   .idea
-   .vscode
-   storage/logs
-   storage/framework/cache
-   storage/framework/sessions
-   storage/framework/views
-   storage/debugbar
-   public/hot
-   public/uploads
-   public/sitemap.xml
-   public/consumers.sitemap.xml
-   public/materials.sitemap.xml
-   tests
-   phpunit.xml
-   .phpunit.result.cache
-   coverage
-   *.log
-   *.sqlite
-   npm-debug.log*
-   ```
-
-4. **Prepare and upload the production `.env` file**:
+3. **Prepare and upload the production**:
     * On your local machine, create a production-ready `.env`:
       ```dotenv
       #######################################
@@ -131,18 +105,46 @@ Lara is a simple and flexible Content Management System built on [Laravel](https
       FLMNGR_API_KEY="YOUR_FLMNGR_API_KEY"
       GOOGLE_MAP_SCRIPTS="//maps.googleapis.com/maps/api/js?key=YOUR_MAPS_API_KEY"
       ```
-    * Upload the modified `.env` to the server.
+
+    * **Exclude the following paths**:
+      ```text
+      .idea
+      .vscode
+      storage/logs
+      storage/debugbar
+      public/hot
+      public/sitemap.xml
+      public/consumers.sitemap.xml
+      public/materials.sitemap.xml
+      tests
+      phpunit.xml
+      .phpunit.result.cache
+      coverage
+      npm-debug.log*
+      ```
+    * Upload the modified `.env` with all project files to the server.
     * After upload, **revert local `.env` back to local settings**.
+    * **Exclude other the following paths**:
+      ```text
+      .env
+      storage/framework/cache
+      storage/framework/sessions
+      storage/framework/views
+      public/uploads
+      ```
 
-5. Upload the project files to the server (via PhpStorm, rsync, FTP, etc.).
+7. Specify the root directory of the server on `public` folder
 
-6. On the server, run:
+8. On the server, run:
    ```bash
    composer install --optimize-autoloader --no-dev
-   # php artisan migrate --seed --force # If not migrate and seed
-   php artisan config:cache
-   php artisan route:cache
-   php artisan view:cache
+   # If not migrate and seed
+   # php artisan migrate --seed --force
+   
+   # If you are sure that the project is complete
+   # php artisan config:cache
+   # php artisan route:cache
+   # php artisan view:cache
    ```
 
 ## License and Copyright

@@ -20,6 +20,7 @@ export default defineConfig({
                 // Other Resources
                 'resources/js/base.js',
                 'resources/css/base.css',
+                'resources/css/front/material.css',
                 'resources/css/two-column.css',
             ],
             refresh: true,
