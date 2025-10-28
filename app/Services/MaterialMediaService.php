@@ -109,13 +109,13 @@ class MaterialMediaService
                     'id'   => $permanentId,
                     'type' => $this->getFileType($file->getMimeType(), $originalName),
                     'name' => $originalName,
-                    'url'  => url("uploads/materials/{$filePath}"),
+                    'url'  => "/uploads/materials/{$filePath}",
                 ]);
             }
             // Handle EXISTING files: They have a permanent (md5) ID.
             else if ($currentFiles->has($id)) {
                 $existingFile = $currentFiles->get($id);
-                $existingFile['url'] = url("uploads/materials/{$directory}/{$existingFile['name']}");
+                $existingFile['url'] = "/uploads/materials/{$directory}/{$existingFile['name']}";
                 unset($existingFile['previewContent']);
                 $finalOrderedFiles->push($existingFile);
             }
@@ -186,7 +186,7 @@ class MaterialMediaService
             if (isset($file['id']) && $file['id'] === $id) {
                 $file['id'] = $newPermanentId; // Update the ID as it's based on the name
                 $file['name'] = $newName;
-                $file['url'] = url("uploads/materials/{$newPath}");
+                $file['url'] = "/uploads/materials/{$newPath}";
             }
             return $file;
         });
