@@ -7,7 +7,7 @@
 @endphp
 
 <!--- Toggle Statistic Key Component --->
-<span {{ $attributes->class(['toggleStatisticKeyComponent']) }}
+<span {{ $attributes->class(['toggleStatisticKeyComponent', 'verbal' => $verbal]) }}
       data-key="{{ $key }}"
       data-model-type="{{ $model->type }}"
       data-model-id="{{ $model->id }}">

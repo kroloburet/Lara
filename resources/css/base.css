@@ -1522,6 +1522,16 @@ body.redirectOverlay::before {
     color: var(--tertiary-color);
 }
 
+.toggleStatisticKeyComponent.verbal .toggleStatisticKeyComponent_count {
+    color: #FFFFFF;
+    background-color: var(--secondary-color);
+    border-radius: 1em;
+    line-height: 1;
+    white-space: nowrap;
+    padding: .3em .5em;
+    margin-left: -1em;
+}
+
 /**************************
  * Consumer Activity Indicator Component
  **************************/

@@ -19,7 +19,7 @@
 @endphp
 
 <!--- Content Tools Component --->
-<div {{ $attributes->class(['contentToolsComponent']) }}>
+<div {{ $attributes->class(['contentToolsComponent', 'verbal' => $verbal]) }}>
     @if($created_at && !empty($model->created_at))
         <time>{{ consumerDateFormat($model->created_at) }}</time>
     @endif
