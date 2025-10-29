@@ -1678,9 +1678,7 @@ body.redirectOverlay::before {
 }
 
 .Paginator-list-view .Paginator_item-control-btn:hover {
-    border-color: var(--UI_contour-border-color);
     background-color: var(--UI_contour-hover-bg-color);
-    color: var(--UI_contour-hover-font-color);
 }
 
 .Paginator_item-details {
