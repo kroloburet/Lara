@@ -1,16 +1,6 @@
-@props(['left', 'right'])
+@props(['left', 'right', 'withoutMenu' => false])
 
-@if(! $attributes->has('withoutMenu'))
-    <x-top-nav-component />
-@else
-    <div class="top-nav-replacer">
-        <div class="container">
-            <a href="{{ route('home') }}" class="logo" title="{{ __('base.default_meta_title') }}"></a>
-
-            <x-lang-switcher-component />
-        </div>
-    </div>
-@endif
+<x-top-nav-component :without-menu="$withoutMenu" />
 
 <main {{ $attributes->class(['two-column', 'container']) }}>
 

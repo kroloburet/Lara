@@ -3,7 +3,7 @@
     :description="__('dev-mode.meta_desc')"
 >
 
-    <x-layouts.two-column withoutMenu>
+    <x-layouts.two-column :without-menu="true">
         <x-slot:left>
             <h1>{!! __('dev-mode.page_title') !!}</h1>
             <p>{!! __('dev-mode.page_desc') !!}</p>

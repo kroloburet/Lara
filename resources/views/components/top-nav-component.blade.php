@@ -1,3 +1,4 @@
+@props(['withoutMenu' => false])
 
 <!--- Top Navigation Component --->
 <div id="topNavComponent">
@@ -6,14 +7,16 @@
 
         <x-lang-switcher-component/>
 
-        <x-menu-view-component :menu="getMenu(app()->getLocale())" />
+        @if(! $withoutMenu)
+            <x-menu-view-component :menu="getMenu(app()->getLocale())" />
+        @endif
 
-        <div class="topNavComponent_user-panel">
-            @auth('admin')
+        @auth('admin')
+            <div class="topNavComponent_user-panel">
                 <!--- Admin Menu --->
                 <x-admin.admin-dropdown-menu-component />
-            @endauth
-        </div>
+            </div>
+        @endauth
     </div>
 </div>
 

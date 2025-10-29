@@ -375,31 +375,6 @@ body {
     grid-template-areas: "img content";
 }
 
-/*--- Top Nav Replacer ---*/
-.top-nav-replacer {
-    padding: var(--layout-gap-s) 0;
-    border-bottom: var(--UI_base-border-width) solid var(--tertiary-color);
-    background-color: var(--nav-bg-color);
-}
-
-.top-nav-replacer > .container {
-    display: flex;
-    align-items: stretch;
-    justify-content: end;
-    gap: var(--layout-gap);
-    width: 100%;
-}
-
-.top-nav-replacer .logo {
-    display: inline-block;
-    margin-right: auto;
-    width: 24px;
-    background: var(--base-logo-url) center no-repeat;
-    background-size: contain;
-    z-index: calc(var(--UI_base-overlay-body-z-index) + 1);
-    position: relative;
-}
-
 /*--- Dashboard Panel ---*/
 .dashboard-panel {
     columns: 2;
