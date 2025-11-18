@@ -161,7 +161,9 @@
 
     <!--- Page Preload --->
     <script>
-        window.onload = () => document.getElementById('pagePreloaderBox').style.display = 'none';
+        document.addEventListener(`DOMContentLoaded`, () => {
+            document.getElementById(`pagePreloaderBox`).style.display = `none`;
+        });
     </script>
 
     <!--
