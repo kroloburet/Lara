@@ -70,7 +70,7 @@ class MaterialMediaService
      * Processes incoming data and returns the final file collection on success.
      *
      * @param array $data Validated request data.
-     * @return Collection|false Returns the final collection on success, false on failure.
+     * @return \Illuminate\Support\Collection|false Returns the final collection on success, false on failure.
      */
     public function set(array $data)
     {
@@ -83,64 +83,78 @@ class MaterialMediaService
             return false;
         }
 
+        // Create a directory if there are new files and the directory does not exist yet
         if (!empty($filesToSave) && !$disk->exists($directory)) {
             $disk->makeDirectory($directory);
         }
 
+        // Current meta.json files keyed by id
         $currentFiles = $this->get()->keyBy('id');
-        $finalOrderedFiles = collect();
+
+        // Collect new and existing files into separate collections in the order they are received
+        $newFilesCollection = collect();
+        $existingFilesCollection = collect();
 
         foreach ($orderedItems as $item) {
-            if (!isset($item['id'], $item['name'])) continue;
+            if (!isset($item['id'], $item['name'])) {
+                continue;
+            }
 
             $id = $item['id'];
 
-            // Handle NEW files: They have a temporary ID starting with 'temp_'.
+            // New temp files have ids starting with 'temp_'
             if (Str::startsWith($id, 'temp_') && isset($filesToSave[$id]) && $filesToSave[$id] instanceof UploadedFile) {
                 $file = $filesToSave[$id];
                 $originalName = $file->getClientOriginalName();
-                $permanentId = md5($originalName); // Create a stable ID from the name.
+                $permanentId = md5($originalName);
 
-                // Save the file with its original name, overwriting any existing file.
+                // Save the file under its original name
                 $disk->putFileAs($directory, $file, $originalName);
-                $filePath = $directory . '/' . $originalName;
+                $filePath = ltrim($directory, '/') . '/' . $originalName; // without leading slash for URL pasting
 
-                $finalOrderedFiles->push([
+                $newFilesCollection->push([
                     'id'   => $permanentId,
                     'type' => $this->getFileType($file->getMimeType(), $originalName),
                     'name' => $originalName,
                     'url'  => "/uploads/materials/{$filePath}",
                 ]);
             }
-            // Handle EXISTING files: They have a permanent (md5) ID.
+            // Take existing files from meta.json (if found)
             else if ($currentFiles->has($id)) {
                 $existingFile = $currentFiles->get($id);
-                $existingFile['url'] = "/uploads/materials/{$directory}/{$existingFile['name']}";
+                $existingFile['url'] = "/uploads/materials/" . ltrim($directory, '/') . '/' . $existingFile['name'];
                 unset($existingFile['previewContent']);
-                $finalOrderedFiles->push($existingFile);
+                $existingFilesCollection->push($existingFile);
             }
         }
 
-        $finalFileNames = $finalOrderedFiles->pluck('name')->all();
+        // Final order: new files (in order of orderedItems) first, then existing files
+        $finalOrderedFiles = $newFilesCollection->concat($existingFilesCollection);
+
+        // Delete physical files that are no longer in the final list
+        $finalFileNames   = $finalOrderedFiles->pluck('name')->all();
         $currentFileNames = $currentFiles->pluck('name')->all();
-        $filesToDelete = array_diff($currentFileNames, $finalFileNames);
+        $filesToDelete    = array_diff($currentFileNames, $finalFileNames);
 
         foreach ($filesToDelete as $fileName) {
             $disk->delete($directory . '/' . $fileName);
         }
 
+        // Unique by id and create meta.json
         $uniqueFiles = $finalOrderedFiles->keyBy('id');
-
         $metaData = ['files' => $uniqueFiles->values()->all()];
         $metaPath = $directory . '/' . $this->metaFileName;
         $disk->put($metaPath, json_encode($metaData, JSON_PRETTY_PRINT));
 
+        // Delete the directory if there are no files and the directory is empty
         if ($uniqueFiles->isEmpty() && $disk->exists($directory)) {
             $disk->deleteDirectory($directory);
         }
 
+        // Return an updated collection of files according to the current meta.json
         return $this->get();
     }
+
 
     /**
      * Renames a specific media file and updates its metadata.

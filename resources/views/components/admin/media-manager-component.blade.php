@@ -24,6 +24,18 @@ data-path="{{ $path }}"
     </div>
 
     <div class="mediaManagerComponent_media-list">
+        <label for="mediaManagerComponent_file-input-{{ $uniqId }}" class="mediaManagerComponent_upload-area"
+               title="{{ __('component.media_selector.Add') }}">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <input
+                type="file"
+                id="mediaManagerComponent_file-input-{{ $uniqId }}"
+                class="mediaManagerComponent_file-input"
+                multiple
+                accept=".jpg,.jpeg,.png,.gif,.svg,.webp,video/*,.pdf"
+                hidden>
+        </label>
+
         @foreach ($files as $file)
             <div class="mediaManagerComponent_item"
                  data-id="{{ $file['id'] }}"
@@ -48,7 +60,7 @@ data-path="{{ $path }}"
                 @endif
 
                 <div class="mediaManagerComponent_item-footer" title="{{ $file['name'] }}">
-                    <span>{{ $file['name'] }}</span>
+                    <span>{{ pathinfo($file['name'], PATHINFO_FILENAME) }}</span>
                 </div>
 
                 <div class="mediaManagerComponent_item-controls">
@@ -62,18 +74,6 @@ data-path="{{ $path }}"
                 </div>
             </div>
         @endforeach
-
-        <label for="mediaManagerComponent_file-input-{{ $uniqId }}" class="mediaManagerComponent_upload-area"
-               title="{{ __('component.media_selector.Add') }}">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-            <input
-                type="file"
-                id="mediaManagerComponent_file-input-{{ $uniqId }}"
-                class="mediaManagerComponent_file-input"
-                multiple
-                accept=".jpg,.jpeg,.png,.gif,.svg,.webp,video/*,.pdf"
-                hidden>
-        </label>
     </div>
 
     <div class="mediaManagerComponent_edit-footer UI_form-component">
@@ -619,9 +619,7 @@ data-path="{{ $path }}"
              */
             renderMediaList() {
                 this.mediaList.querySelectorAll(`.mediaManagerComponent_item`).forEach(el => el.remove());
-                this.items.forEach(item => {
-                    this.mediaList.insertBefore(this.createMediaItemElement(item), this.uploadArea);
-                });
+                this.items.forEach(item => this.mediaList.append(this.createMediaItemElement(item)));
                 this.updateCounter();
             }
 
@@ -649,7 +647,8 @@ data-path="{{ $path }}"
                     }
                     mediaContentHTML = `<div class="mediaManagerComponent_document fa-solid ${iconClass}"></div>`;
                 }
-                const footerHTML = `<div class="mediaManagerComponent_item-footer" title="${item.name}"><span>${item.name}</span></div>`;
+                const name = item.name.replace(/\.[^/.]+$/, ``);
+                const footerHTML = `<div class="mediaManagerComponent_item-footer" title="${item.name}"><span>${name}</span></div>`;
                 const controlsHTML = `
             <div class="mediaManagerComponent_item-controls">
                 <a class="mediaManagerComponent_edit-btn fa-solid fa-pencil" title="Edit"></a>
