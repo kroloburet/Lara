@@ -36,6 +36,10 @@
                     <i class="base_hint-icon" data-hint="this"></i>
                     <span class="UI_Hint">{!! __("admin.material.content_hint") !!}</span>
                     <x-form.content-component/>
+
+                    <div class="UI_notice-info mini-notice UI_full-width">
+                        {!! __("admin.material.media_manager_placeholder") !!}
+                    </div>
                 </dd>
 
                 <dt>{!! __('admin.material.Layout') !!}</dt>

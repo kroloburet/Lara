@@ -176,6 +176,7 @@ return [
         "category_hint" => "Select the section to which this material belongs.",
         "content" => "Material Content",
         "content_hint" => "Use the editor to layout the content section for the material.",
+        "media_manager_placeholder" => "You will be able to add photos, videos and pdfs to the gallery later by editing this material.",
     ],
     "help" => [
         "meta_title" => "System Help | " . env("APP_NAME"),
