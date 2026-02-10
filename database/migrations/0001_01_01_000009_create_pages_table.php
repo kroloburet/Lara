@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->uuid('alias')->unique();
+            $table->string('alias', 250)->unique();
             $table->ulid('storage')->unique();
             $table->string('type', 100)->default('page');
             $table->foreignId('category_id')->nullable();

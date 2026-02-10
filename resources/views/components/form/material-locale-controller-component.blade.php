@@ -19,6 +19,7 @@
 
         @if(! $isStatic)
             <input name="alias"
+                   @if(! $material?->alias) data-lim="this, 250" @endif
                    placeholder="alias-of-material"
                    data-model="{{ $type }}"
                    value="{{ $material?->alias }}"
