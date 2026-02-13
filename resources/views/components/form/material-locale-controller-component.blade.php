@@ -23,7 +23,7 @@
                    placeholder="alias-of-material"
                    data-model="{{ $type }}"
                    value="{{ $material?->alias }}"
-                   @required(! $material?->alias)
+                @required(! $material?->alias)
                 @readonly($material?->alias)>
         @endif
     </label>
@@ -54,29 +54,36 @@
 
         <script>
             {
-                document.addEventListener('DOMContentLoaded', () => {
+                document.addEventListener(`DOMContentLoaded`, () => {
                     const component = document.querySelector(`#localeControllerComponent`);
+                    const titleField = document.querySelector(`[name="title"]`);
                     const aliasField = component.querySelector(`:scope [name="alias"]`);
+
                     const autoFormat = () => {
                         aliasField.value = aliasField.value
-                            .replace(/[\s]+/g, '-')
-                            .replace(/[^a-zA-Z0-9\-]/g, '')
-                            .replace(/-{2,}/g, '-')
+                            .replace(/[\s]+/g, `-`)
+                            .replace(/[^a-zA-Z0-9\-]/g, ``)
+                            .replace(/-{2,}/g, `-`)
                             .toLowerCase()
                             .trim();
                     }
 
-                    // Uniqueness check
-                    const debouncedFetch = debounce(async () =>
+                    const uniquenessCheck = debounce(async () =>
                         await isUniqueValueRequest(aliasField, component));
 
                     aliasField.addEventListener(`keyup`, () => {
+                        if (aliasField.hasAttribute(`readonly`)) return;
                         autoFormat();
-                        debouncedFetch();
+                        uniquenessCheck();
+                    });
+
+                    titleField.addEventListener(`keyup`, () => {
+                        if (aliasField.hasAttribute(`readonly`)) return;
+                        aliasField.value = createSlug(titleField.value);
+                        uniquenessCheck();
                     });
                 });
             }
         </script>
     @endPushOnce
 @endif
-

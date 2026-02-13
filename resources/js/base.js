@@ -957,6 +957,11 @@ window.deleteCookie = (name) => {
  * Other
  **************************/
 
+/**
+ * Create and return system spinner element
+ *
+ * @returns {HTMLDivElement}
+ */
 window.createSpinner = () => {
     const spinner = document.createElement(`div`);
     spinner.classList.add(`load-spinner`);
@@ -964,6 +969,40 @@ window.createSpinner = () => {
     return spinner;
 }
 
+/**
+ * Generates a URL-friendly slug from any string.
+ *
+ * @param {string} text Any string
+ * @returns {string} Slug string
+ */
+window.createSlug = (text) => {
+    if (!text || typeof text !== `string`) return ``;
+
+    const dictionary = {
+        // Cyrillic
+        'а': `a`, 'б': `b`, 'в': `v`, 'г': `h`, 'ґ': `g`, 'д': `d`, 'е': `e`, 'є': `ye`,
+        'ж': `zh`, 'з': `z`, 'и': `y`, 'і': `i`, 'ї': `yi`, 'й': `y`, 'к': `k`, 'л': `l`,
+        'м': `m`, 'н': `n`, 'о': `o`, 'п': `p`, 'р': `r`, 'с': `s`, 'т': `t`, 'у': `u`,
+        'ф': `f`, 'х': `kh`, 'ц': `ts`, 'ч': `ch`, 'ш': `sh`, 'щ': `shch`, 'ь': ``,
+        'ю': `yu`, 'я': `ya`, 'ё': `yo`, 'ы': `y`, 'э': `e`,
+        // European specific characters
+        'ä': `a`, 'ö': `o`, 'ü': `u`, 'ß': `ss`, 'ą': `a`, 'ć': `c`, 'ę': `e`, 'ł': `l`,
+        'ń': `n`, 'ó': `o`, 'ś': `s`, 'ź': `z`, 'ż': `z`, 'ç': `c`, 'ñ': `n`
+    };
+
+    return text
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/['’ʻ‘]/g, ``) // Remove various types of apostrophes
+        .normalize(`NFD`) // Decompose combined characters
+        .split(``)
+        .map(char => dictionary[char] !== undefined ? dictionary[char] : char)
+        .join(``)
+        .replace(/[\u0300-\u036f]/g, ``) // Remove leftover diacritical marks
+        .replace(/[^a-z0-9]+/g, `-`) // Replace non-alphanumeric chars with hyphens
+        .replace(/^-+|-+$/g, ``); // Trim hyphens from both ends
+}
 
 /**
  * Convert absolute URL to relative URL based on current site origin.

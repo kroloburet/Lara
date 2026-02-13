@@ -167,7 +167,7 @@ return [
         "Lang" => "Material Language",
         "Lang_hint" => "Select the language version of the material you will be adding or editing.",
         "Lang_and_id" => "Material Language and Alias",
-        "Lang_and_id_hint" => "Select the language version of the material you will be adding or editing. Specify the material's alias using Latin characters. The alias will be used as a unique identifier and positively affect SEO. The alias cannot be edited after saving.",
+        "Lang_and_id_hint" => "Choose the language version of the content you are adding or editing.<br><br>Specify the alias for this content in Latin characters or leave this field blank to create an alias automatically when you enter the content title. An alias is a unique identifier for the content that also positively impacts search engine optimization. <span class='red-text'>The content alias cannot be edited once saved.</span>",
         "title" => "Material Title",
         "title_hint" => "The title should briefly convey the essence of the content and will be used by search engines.",
         "description" => "Material Description",
