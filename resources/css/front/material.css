@@ -1,9 +1,14 @@
+/********************************************
+ * Add your classes to this file to
+ * style anything on your material pages
+ ********************************************/
+
 /**************************
  * Variables
  **************************/
 
 /*:root {*/
-/*    --content-max-width: 900px;*/
+/* overwrite vars */
 /*}*/
 
 /**************************
@@ -11,8 +16,7 @@
  **************************/
 
 /*.material-content {*/
-/*    max-width: var(--content-max-width);*/
-/*    margin: auto;*/
+/* Rules for the content container */
 /*}*/
 
 /**************************
