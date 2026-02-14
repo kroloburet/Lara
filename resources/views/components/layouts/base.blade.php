@@ -221,6 +221,7 @@
         paginatorLimit: {{ config('app.settings.paginatorLimit') }},
         editor_content_css: [
             `{{ Vite::asset('node_modules/kroloburet_ui/UI.css') }}?` + new Date().getTime(),
+            `{{ Vite::asset('resources/css/front/material.css') }}?` + new Date().getTime(),
             `{{ Vite::asset('resources/css/base.css') }}?` + new Date().getTime(),
         ],
     }
