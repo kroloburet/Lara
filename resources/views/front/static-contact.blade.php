@@ -26,7 +26,7 @@
 
                     <x-media-view-component path="general" :$material />
 
-                    <h3>{!! __('form.appeal.popup_title') !!}</h3>
+                    <h2>{!! __('form.appeal.popup_title') !!}</h2>
                     <p>{!! __('form.appeal.popup_desc') !!}</p>
                     <x-form.appeal-form-component />
 

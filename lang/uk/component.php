@@ -73,4 +73,7 @@ return [
         "Location" => "Розташування",
         "View_map" => "Дивитись на мапі",
     ],
+    "quick_admin_material_actions" => [
+        "title" => "Керувати цим матеріалом:",
+    ],
 ];

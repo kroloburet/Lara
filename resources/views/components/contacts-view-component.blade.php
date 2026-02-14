@@ -15,7 +15,7 @@
     $uniqId = uniqid('contactsViewComponent_');
 @endphp
 
-<h3>{!! __('component.contacts_view.title') !!}</h3>
+<h2>{!! __('component.contacts_view.title') !!}</h2>
 <section {{ $attributes->class(['contactsViewComponent', 'dashboard-panel']) }} id="{{ $uniqId }}">
 
     @if($contacts->phones)

@@ -2,7 +2,7 @@
 <!--- Share Component --->
 <div id="shareComponent" class="UI_Popup">
     <header class="popup-header">
-        <h3>{!! __('component.share.title') !!}</h3>
+        <h2>{!! __('component.share.title') !!}</h2>
         <img src="/images/social_share_pop_bg.svg" alt="Share this page">
     </header>
 

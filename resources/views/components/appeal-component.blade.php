@@ -3,7 +3,7 @@
 <div id="appealComponent" class="UI_Popup">
     <header class="popup-header">
         <div>
-            <h3>{!! __('form.appeal.popup_title') !!}</h3>
+            <h2>{!! __('form.appeal.popup_title') !!}</h2>
             <p>{!! __('form.appeal.popup_desc') !!}</p>
         </div>
         <img src="/images/appeal_pop_bg.svg" alt="Appeal">

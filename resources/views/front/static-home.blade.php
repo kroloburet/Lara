@@ -23,7 +23,6 @@
                     {{ __('base.default_meta_desc') }}
                 </p>
             </div>
-{{--            <img src="/images/bg_image_default.png" alt="Header illustration">--}}
         </section>
     </x-header-component>
 
@@ -44,6 +43,8 @@
 
             <aside class="base-main-aside">
                 <x-content-tools-component class="verbal" :model="$material" verbal />
+
+                <x-admin.quick-admin-material-actions :$material />
             </aside>
         </main>
 

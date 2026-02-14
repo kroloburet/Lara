@@ -3,7 +3,7 @@
 <div id="complainComponent" class="UI_Popup">
     <header class="popup-header">
         <div>
-            <h3>{!! __('component.complain.title') !!}</h3>
+            <h2>{!! __('component.complain.title') !!}</h2>
             <p>{!! __('component.complain.desc') !!}</p>
         </div>
         <img src="/images/complain_pop_bg.svg" alt="To complain">

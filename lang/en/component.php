@@ -73,4 +73,7 @@ return [
         "Location" => "Location",
         "View_map" => "View on Map",
     ],
+    "quick_admin_material_actions" => [
+        "title" => "Manage this material:",
+    ],
 ];

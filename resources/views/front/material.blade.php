@@ -17,17 +17,9 @@
         <!--- Base Main --->
         <main class="base-main {{ collect($layoutSettings['classes'])->join(' ') }}">
             <section class="base-main-section">
-                <section class="material-content">
-                    <h1>{!! $material->content()->title !!}</h1>
+                <h1>{!! $material->content()->title !!}</h1>
 
-                    <x-breadcrumbs-component :$material/>
-
-                @if($material->content()->content)
-                        {!! $material->content()->content !!}
-                    @endif
-
-                    <x-media-view-component path="general" :$material />
-                </section>
+                <x-breadcrumbs-component :$material/>
 
                 @if($material->type === 'category')
                     <main class="categoryMaterialList">
@@ -50,10 +42,20 @@
                         </section>
                     </main>
                 @endif
+
+                <section class="material-content">
+                    @if($material->content()->content)
+                        {!! $material->content()->content !!}
+                    @endif
+
+                    <x-media-view-component path="general" :$material />
+                </section>
             </section>
 
             <aside class="base-main-aside">
-                <x-content-tools-component class="verbal" :model="$material" verbal />
+                <x-content-tools-component class="dashboard-panel-item" :model="$material" verbal />
+
+                <x-admin.quick-admin-material-actions :$material />
             </aside>
         </main>
 
