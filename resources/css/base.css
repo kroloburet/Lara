@@ -186,7 +186,6 @@ body {
     flex-direction: column;
     letter-spacing: .013rem;
     overflow-wrap: break-word;
-    hyphens: auto;
     background-color: var(--UI_base-body-bg-color);
     overflow-x: hidden;
 }
