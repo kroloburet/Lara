@@ -76,4 +76,7 @@ return [
     "quick_admin_material_actions" => [
         "title" => "Керувати цим матеріалом:",
     ],
+    "previous_page_button" => [
+        "title" => "Попередня сторінка",
+    ],
 ];

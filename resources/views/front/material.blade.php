@@ -55,6 +55,8 @@
             <aside class="base-main-aside">
                 <x-content-tools-component class="dashboard-panel-item" :model="$material" verbal />
 
+                <x-previous-page-button-component />
+
                 <x-admin.quick-admin-material-actions :$material />
             </aside>
         </main>

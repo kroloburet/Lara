@@ -76,4 +76,7 @@ return [
     "quick_admin_material_actions" => [
         "title" => "Manage this material:",
     ],
+    "previous_page_button" => [
+        "title" => "Previous Page",
+    ],
 ];
