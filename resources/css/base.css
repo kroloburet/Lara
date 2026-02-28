@@ -18,7 +18,7 @@
     --layout-header-bg-image: url(/images/bg_image_default.png);
     --layout-header-aspect-ratio: 3.5;
     --base-hero-min-hight: clamp(15vw, 10vw, 30vw);
-    --layout-aside-width: 30%;
+    --layout-aside-width: 20%;
     --layout-gapX: clamp(.7rem, 2vw, 2.5rem);
     --layout-gap: clamp(.7rem, 3vw, 2rem);
     --layout-gap-2xs: clamp(0.1rem, 2vw, 0.4rem);
