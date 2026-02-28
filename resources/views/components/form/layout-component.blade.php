@@ -15,7 +15,7 @@
                 <span class="form_field-label">{!! __('settings.layout.desktop.label') !!}</span>
                 <i class="base_hint-icon" data-hint="this"></i>
                 <span class="UI_Hint">{!! __('settings.layout.desktop.hint') !!}</span>
-                <select class="UI_Select layoutComponent_desktop">
+                <select id="layoutComponent_desktop" class="UI_Select">
                     @foreach(config('app.settings.layout.desktop', []) as $className)
                         <option value="{{ $className }}" @selected(in_array($className, $classes))>
                             {{ __("settings.layout.desktop.{$className}") }}
@@ -37,7 +37,7 @@
                 <span class="form_field-label">{!! __('settings.layout.mobile.label') !!}</span>
                 <i class="base_hint-icon" data-hint="this"></i>
                 <span class="UI_Hint">{!! __('settings.layout.mobile.hint') !!}</span>
-                <select class="UI_Select layoutComponent_mobile">
+                <select id="layoutComponent_mobile" class="UI_Select">
                     @foreach(config('app.settings.layout.mobile', []) as $className)
                         <option value="{{ $className }}" @selected(in_array($className, $classes))>
                             {{ __("settings.layout.mobile.{$className}") }}
@@ -57,14 +57,16 @@
     <span class="form_field-label">{!! __('settings.layout.layout_max_width.label') !!}</span>
     <i class="base_hint-icon" data-hint="this"></i>
     <span class="UI_Hint">{!! __('settings.layout.layout_max_width.hint') !!}</span>
-    <input type="range" class="UI_InputRange layoutComponent_layoutMaxWidthField" min="800" max="2000" step="1"
+    <input id="layoutComponent_layoutMaxWidthField" type="range" class="UI_InputRange"
+           min="800" max="2000" step="1"
            data-css-variable="--layout-max-width"
            value="{{ $layoutSettings['layoutMaxWidth'] }}">
 
     <span class="form_field-label">{!! __('settings.layout.aside_width.label') !!}</span>
     <i class="base_hint-icon" data-hint="this"></i>
     <span class="UI_Hint">{!! __('settings.layout.aside_width.hint') !!}</span>
-    <input type="range" class="UI_InputRange layoutComponent_asideWidthField" min="20" max="50" step="1"
+    <input id="layoutComponent_asideWidthField" type="range" class="UI_InputRange"
+           min="20" max="50" step="1"
            data-css-variable="--layout-aside-width"
            value="{{ $layoutSettings['asideWidth'] }}">
 
@@ -159,10 +161,10 @@
     <script>
         {
             const component = document.getElementById(`layoutComponent`);
-            const desktopField = component.querySelector(`.layoutComponent_desktop`);
-            const mobileField = component.querySelector(`.layoutComponent_mobile`);
-            const layoutMaxWidthField = component.querySelector(`.layoutComponent_layoutMaxWidthField`);
-            const asideWidthField = component.querySelector(`.layoutComponent_asideWidthField`);
+            const desktopField = document.getElementById(`layoutComponent_desktop`);
+            const mobileField = document.getElementById(`layoutComponent_mobile`);
+            const layoutMaxWidthField = document.getElementById(`layoutComponent_layoutMaxWidthField`);
+            const asideWidthField = document.getElementById(`layoutComponent_asideWidthField`);
             const headerField = component.querySelector(`.layoutComponent_header`);
             const dataField = component.querySelector(`[name="layout"]`);
             const prevDesktop = component.querySelector(`.preview-desktop`);

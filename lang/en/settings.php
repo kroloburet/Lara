@@ -32,8 +32,9 @@ return [
     ],
     "layout" => [
         "title" => "Layout",
-        "desc" => "These settings will be applied by default to new materials you create in the System. Select the material type, configure the layout, and click <q>Apply</q>. You can customize the layout for each individual material at any time on the create or edit page.",
+        "desc" => "Quickly set the default layout for all new materials you create and override layout settings in all materials you've already created. Select the material type, set the layout, choose the purpose of the settings and click <q>Apply</q>. At any time, you can adjust the layout for each individual material independently of these settings on the page of creating or editing a material.",
         "save_changes_confirm" => "<h5>Please wait</h5>Save your settings for this material type before switching to another?",
+        "save_existent_materials_confirm" => "<h5>Confirm action</h5>Layout settings in all already created materials of the selected type will be overwritten with these settings. All new materials of the selected type will default to these layout settings.",
         "material_type" => [
             "label" => "Material Type",
             "hint" => "Select the material type to configure the default layout for all new materials of this type.",
@@ -65,6 +66,12 @@ return [
         "aside_width" => [
             "label" => "Layout column width (%)",
             "hint" => "Determine what the layout column width will be as a percentage of the layout width. Recommended width 30%",
+        ],
+        "save_opt" => [
+            "label" => "Assignment of settings",
+            "hint" => "You can assign layout settings only to new (to be created by you) materials of the selected type, or to materials of the selected type that have already been created and are new.",
+            "only_new" => "Only for new materials",
+            "existent_and_new" => "For already created and new materials",
         ],
     ],
 ];

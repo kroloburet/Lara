@@ -12,6 +12,7 @@ use App\Http\Controllers\XHR\Admin\PaginateFilteredMaterialsListController;
 use App\Http\Controllers\XHR\Admin\PaginateFilteredModeratorsListController;
 use App\Http\Controllers\XHR\Admin\PaginateUnfinishedMaterialsListController;
 use App\Http\Controllers\XHR\Admin\RefreshSitemapController;
+use App\Http\Controllers\XHR\Admin\SetAppLayoutController;
 use App\Http\Controllers\XHR\Admin\SetAppSettingsController;
 use App\Http\Controllers\XHR\Admin\ToggleBlockMaterialController;
 use App\Http\Controllers\XHR\Admin\ToggleBlockModeratorController;
@@ -99,6 +100,8 @@ Route::post('/delete/bug-report',
 // Settings & other
 Route::post('/set/app/setting',
     SetAppSettingsController::class)->name('set.app.setting');
+Route::post('/set/app/layout',
+    SetAppLayoutController::class)->name('set.app.layout');
 Route::post('/refresh/sitemap',
     [RefreshSitemapController::class, 'refresh'])->name('refresh.sitemap');
 Route::post('/view/sitemap',
